@@ -1,330 +1,380 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const base = import.meta.env.BASE_URL;
 
 const watches = [
   {
-    name: "GMT Master 2",
-    description: "Um ícone da relojoaria suíça, o GMT Master II é reconhecido por sua capacidade de exibir dois fusos horários simultaneamente. Com seu bisel giratório bidirecional e mostrador meticulosamente trabalhado, este relógio é a escolha dos viajantes mais exigentes.",
+    name: "GMT Master II",
+    ref: "126710BLRO",
+    description: "Ícone da relojoaria suíça com exibição de dois fusos horários simultâneos. Bisel Cerachrom bidirecional, movimento Calibre 3285 e reserva de marcha de aproximadamente 70 horas.",
     image: "https://cdn.prod.website-files.com/698c7ba56e1347e45bd9baf8/698c7be9af43dd63e01a1a91_transferir.jpg",
     slug: "gmt-master-2",
-    color: "#8b0000",
   },
+];
+
+const features = [
+  { icon: "⧗", title: "Autenticidade Garantida", text: "Cada peça passa por rigorosa verificação de autenticidade antes de chegar até você." },
+  { icon: "◈", title: "Swiss Made", text: "Movimentos suíços de alta precisão com décadas de tradição relojoeira." },
+  { icon: "◉", title: "Atendimento Premium", text: "Consultoria personalizada via WhatsApp com especialistas em relojoaria de luxo." },
 ];
 ---
 
-<Layout title="Bunker Watches - Luxury Timepieces & Swiss Craftsmanship">
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="nav-container">
-      <a href="/" class="nav-logo">BUNKER WATCHES</a>
-      <div class="nav-links">
-        <a href="/watches" class="nav-link">Coleção</a>
-        <a href="#about" class="nav-link">Sobre</a>
-        <a href="#contact" class="nav-link">Contato</a>
-      </div>
-    </div>
-  </nav>
+<Layout title="Bunker Watches — Relógios de Luxo & Artesanato Suíço">
+  <Nav active="home" transparent={true} />
 
-  <!-- Hero Section -->
+  <!-- ─── HERO ─── -->
   <section class="hero">
-    <div class="hero-content">
-      <p class="hero-eyebrow">Relojoaria de Luxo</p>
-      <h1 class="hero-title">BUNKER<br />WATCHES</h1>
-      <p class="hero-subtitle">Timeless Luxury &amp; Precision</p>
-      <a href="/watches" class="btn-outline">Ver Coleção</a>
+    <div class="hero-bg"></div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Relojoaria de Alto Padrão</p>
+        <h1 class="hero-title">
+          BUNKER<br />WATCHES
+        </h1>
+        <p class="hero-sub">Timeless Luxury &amp; Precision</p>
+        <div class="hero-actions">
+          <a href={`${base}watches`} class="btn-outline">Ver Coleção</a>
+          <a href="https://wa.me/5511946094089" class="hero-contact" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Falar no WhatsApp
+          </a>
+        </div>
+      </div>
+      <div class="hero-watch-visual" aria-hidden="true">
+        <div class="watch-ring watch-ring-1"></div>
+        <div class="watch-ring watch-ring-2"></div>
+        <div class="watch-ring watch-ring-3"></div>
+        <div class="watch-face">
+          <div class="watch-hand watch-hand-hour"></div>
+          <div class="watch-hand watch-hand-minute"></div>
+          <div class="watch-center"></div>
+          <span class="watch-brand-label">BUNKER</span>
+        </div>
+        <div class="watch-crown-top"></div>
+        <div class="watch-crown-bottom"></div>
+      </div>
     </div>
-    <div class="hero-decoration">
-      <div class="hero-circle"></div>
+    <div class="hero-scroll-indicator">
+      <span class="scroll-text">Scroll</span>
+      <div class="scroll-line"></div>
     </div>
   </section>
 
-  <!-- Divider -->
-  <div class="section-divider"></div>
+  <div class="divider"></div>
 
-  <!-- About Section -->
+  <!-- ─── SOBRE ─── -->
   <section class="about" id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-text">
-          <p class="section-label">Nossa História</p>
-          <h2 class="section-title">Timeless Elegance</h2>
-          <p class="body-text">
-            Handcrafted Swiss timepieces that define luxury and precision. Each watch tells a unique story of craftsmanship, combining centuries of horological tradition with modern design innovation.
-          </p>
-          <p class="body-text">
-            Na Bunker Watches, acreditamos que um relógio de alto padrão vai além de simplesmente marcar o tempo — é uma expressão de identidade, um legado que atravessa gerações.
-          </p>
-          <a href="/watches" class="btn-outline" style="margin-top: 2rem; display: inline-block;">Explorar Coleção</a>
+    <div class="container about-grid">
+      <div class="about-text">
+        <p class="section-label">Nossa Essência</p>
+        <h2 class="section-heading">Timeless Elegance</h2>
+        <p class="body-text">
+          Relógios suíços artesanais que definem luxo e precisão. Cada peça conta uma história única de excelência, combinando séculos de tradição relojoeira com design contemporâneo.
+        </p>
+        <p class="body-text">
+          Na Bunker Watches, um relógio de alto padrão vai além de marcar o tempo — é uma expressão de identidade e um legado que atravessa gerações.
+        </p>
+        <a href={`${base}watches`} class="btn-outline" style="margin-top: 2rem;">Explorar Coleção</a>
+      </div>
+      <div class="about-stats">
+        <div class="stat">
+          <span class="stat-num">50<sup>+</sup></span>
+          <span class="stat-label">Anos de Tradição</span>
         </div>
-        <div class="about-stats">
-          <div class="stat">
-            <span class="stat-number">50+</span>
-            <span class="stat-label">Anos de Tradição</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number">100%</span>
-            <span class="stat-label">Swiss Made</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number">∞</span>
-            <span class="stat-label">Garantia de Qualidade</span>
-          </div>
+        <div class="stat">
+          <span class="stat-num">100%</span>
+          <span class="stat-label">Swiss Made</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">∞</span>
+          <span class="stat-label">Garantia de Qualidade</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Featured Collection -->
-  <section class="collection">
+  <div class="divider"></div>
+
+  <!-- ─── COLEÇÃO ─── -->
+  <section class="collection" id="colecao">
     <div class="container">
-      <p class="section-label" style="text-align: center;">Destaques</p>
-      <h2 class="section-title" style="text-align: center; margin-bottom: 3rem;">Coleção em Destaque</h2>
+      <div class="collection-header">
+        <div>
+          <p class="section-label">Peças Selecionadas</p>
+          <h2 class="section-heading">Coleção em Destaque</h2>
+        </div>
+        <a href={`${base}watches`} class="btn-outline collection-all-btn">Ver Todos</a>
+      </div>
       <div class="watches-grid">
-        {watches.map((watch) => (
-          <a href={`/watches/${watch.slug}`} class="watch-card">
-            <div class="watch-image-wrap">
-              <img src={watch.image} alt={watch.name} class="watch-image" />
+        {watches.map((w) => (
+          <a href={`${base}watches/${w.slug}`} class="watch-card">
+            <div class="watch-card-image">
+              <img src={w.image} alt={w.name} loading="lazy" />
+              <div class="watch-card-overlay">
+                <span>Ver Detalhes</span>
+              </div>
             </div>
-            <div class="watch-info">
-              <h3 class="watch-name">{watch.name}</h3>
-              <p class="watch-desc">{watch.description.slice(0, 120)}...</p>
-              <span class="watch-cta">Ver Detalhes →</span>
+            <div class="watch-card-body">
+              <div class="watch-card-top">
+                <h3 class="watch-card-name">{w.name}</h3>
+                <span class="watch-card-ref">REF. {w.ref}</span>
+              </div>
+              <p class="watch-card-desc">{w.description}</p>
+              <span class="watch-card-cta">Consultar disponibilidade →</span>
             </div>
           </a>
         ))}
       </div>
-      <div style="text-align: center; margin-top: 3rem;">
-        <a href="/watches" class="btn-outline">Ver Toda a Coleção</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── DIFERENCIAIS ─── -->
+  <section class="features">
+    <div class="container">
+      <p class="section-label" style="text-align:center">Por que a Bunker?</p>
+      <h2 class="section-heading" style="text-align:center; margin-bottom:56px">Excelência em Cada Detalhe</h2>
+      <div class="features-grid">
+        {features.map((f) => (
+          <div class="feature-card">
+            <span class="feature-icon">{f.icon}</span>
+            <h3 class="feature-title">{f.title}</h3>
+            <p class="feature-text">{f.text}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <div class="divider"></div>
+
+  <!-- ─── CONTATO ─── -->
   <section class="contact" id="contact">
-    <div class="container contact-inner">
+    <div class="container contact-content">
       <p class="section-label">Entre em Contato</p>
-      <h2 class="section-title">Fale Conosco</h2>
-      <p class="body-text" style="max-width: 500px;">
-        Tem dúvidas sobre nossa coleção ou deseja agendar uma consulta personalizada? Estamos disponíveis para atendê-lo.
+      <h2 class="section-heading">Fale com um Especialista</h2>
+      <p class="body-text" style="max-width:520px">
+        Tem interesse em alguma peça ou deseja uma consultoria personalizada? Nossa equipe está disponível para atendê-lo com exclusividade.
       </p>
-      <a href="https://wa.me/5511946094089" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-        </svg>
+      <a
+        href="https://wa.me/5511946094089?text=Olá! Tenho interesse em conhecer a coleção Bunker Watches."
+        class="btn-whatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
         Chamar no WhatsApp: +11 94609-4089
       </a>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <span class="footer-brand">BUNKER WATCHES</span>
-      <span class="footer-copy">© {new Date().getFullYear()} Bunker Watches. Todos os direitos reservados.</span>
-    </div>
-  </footer>
+  <Footer />
 </Layout>
 
 <style>
-  /* ---- Layout ---- */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 48px;
-  }
-
-  @media (max-width: 767px) {
-    .container { padding: 0 24px; }
-  }
-
-  /* ---- Nav ---- */
-  .nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    padding: 24px 0;
-    background: linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, transparent 100%);
-  }
-
-  .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .nav-logo {
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #fff;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 40px;
-  }
-
-  .nav-link {
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.65);
-    transition: color 0.2s;
-  }
-
-  .nav-link:hover {
-    color: #fff;
-  }
-
-  @media (max-width: 767px) {
-    .nav-container { padding: 0 24px; }
-    .nav-links { gap: 20px; }
-  }
-
-  /* ---- Hero ---- */
+  /* ─── HERO ─── */
   .hero {
     position: relative;
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 120px 48px 80px;
     overflow: hidden;
   }
 
-  .hero-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-    position: relative;
-    z-index: 2;
-  }
-
-  .hero-eyebrow {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
-    margin: 0 0 24px;
-  }
-
-  .hero-title {
-    font-family: 'Merriweather', serif;
-    font-size: clamp(64px, 10vw, 120px);
-    font-weight: 300;
-    line-height: 1.0;
-    letter-spacing: 0.04em;
-    color: #ffffff;
-    margin: 0 0 24px;
-  }
-
-  .hero-subtitle {
-    font-size: 18px;
-    font-weight: 300;
-    letter-spacing: 0.06em;
-    color: rgba(255,255,255,0.55);
-    margin: 0 0 48px;
-    font-style: italic;
-    font-family: 'Merriweather', serif;
-  }
-
-  .hero-decoration {
+  .hero-bg {
     position: absolute;
-    right: -200px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 70% 50%, rgba(255,255,255,0.025) 0%, transparent 70%),
+      radial-gradient(ellipse 30% 40% at 20% 80%, rgba(255,255,255,0.015) 0%, transparent 60%);
     pointer-events: none;
   }
 
-  .hero-circle {
-    width: 700px;
-    height: 700px;
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.05);
-    background: radial-gradient(circle at center, rgba(255,255,255,0.02) 0%, transparent 70%);
-  }
-
-  /* ---- Buttons ---- */
-  .btn-outline {
-    display: inline-block;
-    padding: 14px 36px;
-    border: 1px solid rgba(255,255,255,0.2);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #ffffff;
-    transition: border-color 0.2s, background 0.2s;
-  }
-
-  .btn-outline:hover {
-    border-color: rgba(255,255,255,0.6);
-    background: rgba(255,255,255,0.04);
-  }
-
-  .btn-whatsapp {
-    display: inline-flex;
+  .hero-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 12px;
-    padding: 16px 36px;
-    background: #25D366;
-    color: #fff;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    margin-top: 2rem;
-    transition: background 0.2s;
+    gap: 60px;
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
 
-  .btn-whatsapp:hover {
-    background: #1da851;
-    color: #fff;
-  }
-
-  /* ---- Divider ---- */
-  .section-divider {
-    width: 100%;
-    height: 1px;
-    background: rgba(255,255,255,0.06);
-  }
-
-  /* ---- Section labels ---- */
-  .section-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.22em;
+  .hero-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-    margin: 0 0 16px;
+    color: rgba(255,255,255,0.3);
+    margin: 0 0 28px;
   }
 
-  .section-title {
-    font-family: 'Merriweather', serif;
-    font-size: clamp(32px, 4vw, 52px);
+  .hero-title {
+    font-family: 'Merriweather', Georgia, serif;
+    font-size: clamp(60px, 9vw, 110px);
     font-weight: 300;
-    line-height: 1.15;
+    line-height: 1.0;
+    letter-spacing: 0.06em;
     color: #ffffff;
     margin: 0 0 24px;
   }
 
-  .body-text {
-    font-size: 17px;
+  .hero-sub {
+    font-family: 'Merriweather', Georgia, serif;
+    font-size: 16px;
     font-weight: 300;
-    line-height: 1.75;
-    color: rgba(255,255,255,0.65);
-    margin: 0 0 16px;
-    max-width: 540px;
+    font-style: italic;
+    color: rgba(255,255,255,0.45);
+    margin: 0 0 52px;
+    letter-spacing: 0.04em;
   }
 
-  /* ---- About ---- */
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .hero-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.5);
+    transition: color 0.2s;
+  }
+
+  .hero-contact:hover { color: #fff; }
+
+  /* Watch Visual */
+  .hero-watch-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 480px;
+  }
+
+  .watch-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .watch-ring-1 { width: 420px; height: 420px; }
+  .watch-ring-2 { width: 320px; height: 320px; border-color: rgba(255,255,255,0.05); }
+  .watch-ring-3 { width: 220px; height: 220px; border-color: rgba(255,255,255,0.08); }
+
+  .watch-face {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 60%, rgba(0,0,0,0.3) 100%);
+    border: 2px solid rgba(255,255,255,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+
+  .watch-brand-label {
+    position: absolute;
+    bottom: 50px;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+  }
+
+  .watch-hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.85);
+  }
+
+  .watch-hand-hour {
+    width: 2px;
+    height: 52px;
+    margin-left: -1px;
+    transform: rotate(-60deg);
+  }
+
+  .watch-hand-minute {
+    width: 1.5px;
+    height: 66px;
+    margin-left: -0.75px;
+    transform: rotate(120deg);
+    opacity: 0.7;
+  }
+
+  .watch-center {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.9);
+    z-index: 2;
+  }
+
+  .watch-crown-top,
+  .watch-crown-bottom {
+    position: absolute;
+    width: 16px;
+    height: 28px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .watch-crown-top { bottom: calc(50% + 94px); }
+  .watch-crown-bottom { top: calc(50% + 94px); }
+
+  /* Scroll indicator */
+  .hero-scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.3;
+  }
+
+  .scroll-text {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, #fff, transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 0.8; transform: scaleY(1.1); }
+  }
+
+  /* ─── ABOUT ─── */
   .about {
     padding: 120px 0;
   }
@@ -339,153 +389,233 @@ const watches = [
   .about-stats {
     display: flex;
     flex-direction: column;
-    gap: 48px;
-    padding-left: 40px;
-    border-left: 1px solid rgba(255,255,255,0.08);
+    gap: 0;
+    border-left: 1px solid rgba(255,255,255,0.07);
+    padding-left: 60px;
   }
 
-  .stat-number {
+  .stat {
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .stat:last-child { border-bottom: none; }
+
+  .stat-num {
     display: block;
     font-family: 'Merriweather', serif;
-    font-size: 52px;
+    font-size: 48px;
     font-weight: 300;
-    color: #ffffff;
+    color: #fff;
     line-height: 1;
     margin-bottom: 8px;
   }
 
+  .stat-num sup {
+    font-size: 24px;
+    vertical-align: super;
+    line-height: 0;
+  }
+
   .stat-label {
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0.15em;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.35);
   }
 
-  @media (max-width: 991px) {
-    .about-grid {
-      grid-template-columns: 1fr;
-      gap: 60px;
-    }
-    .about-stats {
-      padding-left: 0;
-      border-left: none;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 48px;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-  }
-
-  /* ---- Collection ---- */
+  /* ─── COLLECTION ─── */
   .collection {
     padding: 120px 0;
-    background: rgba(255,255,255,0.015);
+    background: rgba(255,255,255,0.012);
   }
+
+  .collection-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .collection-all-btn { align-self: center; }
 
   .watches-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 2px;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 1px;
+    background: rgba(255,255,255,0.04);
   }
 
   .watch-card {
     display: block;
-    background: rgba(255,255,255,0.025);
-    border: 1px solid rgba(255,255,255,0.06);
-    transition: border-color 0.3s, background 0.3s;
+    background: #0a0a0a;
+    transition: background 0.3s;
     overflow: hidden;
   }
 
-  .watch-card:hover {
-    border-color: rgba(255,255,255,0.15);
-    background: rgba(255,255,255,0.04);
-  }
+  .watch-card:hover { background: #0f0f0f; }
 
-  .watch-image-wrap {
+  .watch-card-image {
+    position: relative;
     overflow: hidden;
     aspect-ratio: 4/3;
-    background: rgba(255,255,255,0.03);
+    background: rgba(255,255,255,0.02);
   }
 
-  .watch-image {
+  .watch-card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.6s ease;
   }
 
-  .watch-card:hover .watch-image {
-    transform: scale(1.04);
+  .watch-card:hover .watch-card-image img { transform: scale(1.05); }
+
+  .watch-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
   }
 
-  .watch-info {
-    padding: 32px;
-  }
-
-  .watch-name {
-    font-family: 'Merriweather', serif;
-    font-size: 22px;
-    font-weight: 300;
-    color: #ffffff;
-    margin: 0 0 12px;
-  }
-
-  .watch-desc {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 1.7;
-    color: rgba(255,255,255,0.55);
-    margin: 0 0 20px;
-  }
-
-  .watch-cta {
+  .watch-card-overlay span {
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.4);
+    padding: 10px 24px;
+  }
+
+  .watch-card:hover .watch-card-overlay { opacity: 1; }
+
+  .watch-card-body {
+    padding: 32px 36px 36px;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-top: none;
+  }
+
+  .watch-card-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+
+  .watch-card-name {
+    font-family: 'Merriweather', serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: #fff;
+    margin: 0;
+  }
+
+  .watch-card-ref {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    color: rgba(255,255,255,0.25);
+    white-space: nowrap;
+  }
+
+  .watch-card-desc {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.75;
     color: rgba(255,255,255,0.5);
+    margin: 0 0 20px;
+  }
+
+  .watch-card-cta {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.35);
     transition: color 0.2s;
   }
 
-  .watch-card:hover .watch-cta {
-    color: #ffffff;
+  .watch-card:hover .watch-card-cta { color: rgba(255,255,255,0.8); }
+
+  /* ─── FEATURES ─── */
+  .features {
+    padding: 120px 0;
   }
 
-  /* ---- Contact ---- */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .feature-card {
+    background: #0a0a0a;
+    padding: 52px 44px;
+    transition: background 0.3s;
+  }
+
+  .feature-card:hover { background: #0d0d0d; }
+
+  .feature-icon {
+    display: block;
+    font-size: 24px;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 28px;
+    line-height: 1;
+  }
+
+  .feature-title {
+    font-family: 'Merriweather', serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: #fff;
+    margin: 0 0 16px;
+  }
+
+  .feature-text {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+  }
+
+  /* ─── CONTACT ─── */
   .contact {
     padding: 120px 0;
   }
 
-  .contact-inner {
-    max-width: 700px;
+  .contact-content {
+    max-width: 680px;
   }
 
-  /* ---- Footer ---- */
-  .footer {
-    padding: 40px 0;
-    border-top: 1px solid rgba(255,255,255,0.06);
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .hero-container { grid-template-columns: 1fr; }
+    .hero-watch-visual { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 60px; }
+    .about-stats { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 40px; flex-direction: row; flex-wrap: wrap; }
+    .stat { padding: 0 40px 0 0; border-bottom: none; }
+    .features-grid { grid-template-columns: 1fr; }
   }
 
-  .footer-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .footer-brand {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.8);
-  }
-
-  .footer-copy {
-    font-size: 12px;
-    color: rgba(255,255,255,0.3);
+  @media (max-width: 767px) {
+    .hero-title { font-size: 56px; }
+    .watches-grid { grid-template-columns: 1fr; }
+    .about { padding: 80px 0; }
+    .collection, .features, .contact { padding: 80px 0; }
+    .watch-card-body { padding: 24px; }
+    .feature-card { padding: 36px 28px; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+    .stat { padding-right: 32px; }
   }
 </style>

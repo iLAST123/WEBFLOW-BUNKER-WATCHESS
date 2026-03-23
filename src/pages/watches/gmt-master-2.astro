@@ -1,193 +1,172 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const base = import.meta.env.BASE_URL;
 
 const watch = {
-  name: "GMT Master 2",
-  description: "Um ícone da relojoaria suíça, o GMT Master II é reconhecido por sua capacidade de exibir dois fusos horários simultaneamente. Com seu bisel giratório bidirecional e mostrador meticulosamente trabalhado, este relógio é a escolha dos viajantes mais exigentes.",
+  name: "GMT Master II",
+  ref: "126710BLRO",
+  collection: "Rolex",
+  description: "Um ícone da relojoaria suíça, o GMT Master II é reconhecido por sua capacidade de exibir dois fusos horários simultaneamente. Com seu bisel Cerachrom giratório bidirecional e mostrador meticulosamente trabalhado, este relógio é a escolha dos viajantes mais exigentes — e de todos que apreciam engenharia relojoeira de excelência.",
   image: "https://cdn.prod.website-files.com/698c7ba56e1347e45bd9baf8/698c7be9af43dd63e01a1a91_transferir.jpg",
-  slug: "gmt-master-2",
-  color: "#8b0000",
-  details: [
-    { label: "Referência", value: "126710BLRO" },
-    { label: "Movimento", value: "Calibre 3285" },
-    { label: "Caixa", value: "Oystersteel, 40mm" },
-    { label: "Bisel", value: "Cerachrom, bidirecionalmente rotativo" },
-    { label: "Mostrador", value: "Preto" },
-    { label: "Bracelete", value: "Jubilee, Oystersteel" },
-    { label: "Reserva de marcha", value: "Aproximadamente 70 horas" },
-    { label: "Resistência à água", value: "100 metros / 330 pés" },
+  specs: [
+    { group: "Caixa",     items: [
+      { label: "Referência",      value: "126710BLRO" },
+      { label: "Material",        value: "Oystersteel" },
+      { label: "Diâmetro",        value: "40 mm" },
+      { label: "Vidro",           value: "Safira, antirreflexo" },
+      { label: "Impermeabilidade",value: "100 m / 330 pés" },
+    ]},
+    { group: "Mostrador", items: [
+      { label: "Cor",             value: "Preto" },
+      { label: "Bisel",           value: "Cerachrom, bidirecional" },
+      { label: "Ponteiros",       value: "Cromáticos, luminosos" },
+    ]},
+    { group: "Movimento", items: [
+      { label: "Calibre",         value: "3285" },
+      { label: "Tipo",            value: "Automático" },
+      { label: "Reserva de marcha", value: "Aprox. 70 horas" },
+      { label: "Oscilador",       value: "Parachrom" },
+    ]},
+    { group: "Bracelete", items: [
+      { label: "Modelo",          value: "Jubilee" },
+      { label: "Material",        value: "Oystersteel" },
+      { label: "Fecho",           value: "Oysterclasp" },
+    ]},
   ],
 };
 ---
 
-<Layout title={`${watch.name} - Bunker Watches`} description={watch.description}>
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="nav-container">
-      <a href="/" class="nav-logo">BUNKER WATCHES</a>
-      <div class="nav-links">
-        <a href="/watches" class="nav-link active">Coleção</a>
-        <a href="/#about" class="nav-link">Sobre</a>
-        <a href="/#contact" class="nav-link">Contato</a>
+<Layout
+  title={`${watch.name} — ${watch.collection} | Bunker Watches`}
+  description={watch.description.slice(0, 160)}
+>
+  <Nav active="watches" />
+
+  <main class="page-main">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-bar">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href={base} class="bc-link">Home</a>
+          <span class="bc-sep" aria-hidden="true">/</span>
+          <a href={`${base}watches`} class="bc-link">Coleção</a>
+          <span class="bc-sep" aria-hidden="true">/</span>
+          <span class="bc-current">{watch.name}</span>
+        </nav>
       </div>
     </div>
-  </nav>
 
-  <!-- Breadcrumb -->
-  <div class="breadcrumb">
-    <div class="container">
-      <a href="/" class="crumb">Home</a>
-      <span class="crumb-sep">/</span>
-      <a href="/watches" class="crumb">Coleção</a>
-      <span class="crumb-sep">/</span>
-      <span class="crumb current">{watch.name}</span>
-    </div>
-  </div>
-
-  <!-- Product Detail -->
-  <section class="product-section">
-    <div class="container">
-      <div class="product-grid">
-        <!-- Image -->
-        <div class="product-image-wrap">
-          <img src={watch.image} alt={watch.name} class="product-image" />
+    <!-- Product -->
+    <section class="product-section">
+      <div class="container product-grid">
+        <!-- Image Panel -->
+        <div class="image-panel">
+          <div class="image-wrap">
+            <img src={watch.image} alt={watch.name} />
+            <div class="image-badge">Autêntico</div>
+          </div>
+          <div class="image-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+            Imagens ilustrativas. Peça real disponível para visualização mediante agendamento.
+          </div>
         </div>
 
-        <!-- Info -->
-        <div class="product-info">
-          <p class="section-label">Rolex Collection</p>
-          <h1 class="product-name">{watch.name}</h1>
-          <p class="product-desc">{watch.description}</p>
+        <!-- Info Panel -->
+        <div class="info-panel">
+          <div class="info-header">
+            <p class="collection-tag">{watch.collection}</p>
+            <h1 class="product-name">{watch.name}</h1>
+            <p class="product-ref">Ref. {watch.ref}</p>
+          </div>
 
-          <div class="section-divider" style="margin: 40px 0;"></div>
+          <div class="divider product-divider"></div>
 
-          <!-- Specifications -->
-          <h3 class="specs-title">Especificações</h3>
-          <div class="specs-list">
-            {watch.details.map((detail) => (
-              <div class="spec-row">
-                <span class="spec-label">{detail.label}</span>
-                <span class="spec-value">{detail.value}</span>
-              </div>
+          <p class="product-description">{watch.description}</p>
+
+          <div class="divider product-divider"></div>
+
+          <!-- Specs Accordion -->
+          <div class="specs">
+            <p class="specs-header">Especificações Técnicas</p>
+            {watch.specs.map((group) => (
+              <details class="spec-group" open={group.group === "Caixa"}>
+                <summary class="spec-group-title">{group.group}</summary>
+                <div class="spec-items">
+                  {group.items.map((item) => (
+                    <div class="spec-row">
+                      <span class="spec-label">{item.label}</span>
+                      <span class="spec-value">{item.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </details>
             ))}
           </div>
 
-          <div class="section-divider" style="margin: 40px 0;"></div>
+          <div class="divider product-divider"></div>
 
-          <a
-            href="https://wa.me/5511946094089?text=Olá! Tenho interesse no Rolex GMT Master 2."
-            class="btn-whatsapp"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-            </svg>
-            Consultar via WhatsApp
-          </a>
+          <!-- CTA -->
+          <div class="product-cta">
+            <p class="cta-note">Consulte disponibilidade e condições de pagamento.</p>
+            <a
+              href={`https://wa.me/5511946094089?text=Olá! Tenho interesse no Rolex ${watch.name} (Ref. ${watch.ref}). Poderia me informar sobre disponibilidade e valores?`}
+              class="btn-whatsapp btn-whatsapp-full"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              Consultar via WhatsApp
+            </a>
+            <a href={`${base}watches`} class="btn-outline btn-back">← Voltar para Coleção</a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <span class="footer-brand">BUNKER WATCHES</span>
-      <span class="footer-copy">© {new Date().getFullYear()} Bunker Watches. Todos os direitos reservados.</span>
-    </div>
-  </footer>
+  <Footer />
 </Layout>
 
 <style>
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 48px;
-  }
-
-  @media (max-width: 767px) {
-    .container { padding: 0 24px; }
-  }
-
-  /* Nav */
-  .nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 24px 0;
-    background: rgba(10,10,10,0.95);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-  }
-
-  .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .nav-logo {
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #fff;
-  }
-
-  .nav-links { display: flex; gap: 40px; }
-
-  .nav-link {
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-    transition: color 0.2s;
-  }
-
-  .nav-link:hover, .nav-link.active { color: #fff; }
-
-  @media (max-width: 767px) {
-    .nav-container { padding: 0 24px; }
-    .nav-links { gap: 20px; }
-  }
+  .page-main { padding-top: 72px; }
 
   /* Breadcrumb */
-  .breadcrumb {
-    padding: 96px 0 0;
+  .breadcrumb-bar {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.01);
   }
 
-  .breadcrumb .container {
+  .breadcrumb {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding-top: 24px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 18px 0;
   }
 
-  .crumb {
+  .bc-link {
     font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.3);
     transition: color 0.2s;
   }
 
-  .crumb:hover { color: rgba(255,255,255,0.7); }
-  .crumb.current { color: rgba(255,255,255,0.7); }
+  .bc-link:hover { color: rgba(255,255,255,0.7); }
 
-  .crumb-sep {
+  .bc-sep {
     font-size: 12px;
-    color: rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.15);
   }
 
-  /* Product */
+  .bc-current {
+    font-size: 12px;
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* Product section */
   .product-section {
-    padding: 60px 0 120px;
+    padding: 60px 0 100px;
   }
 
   .product-grid {
@@ -197,34 +176,73 @@ const watch = {
     align-items: start;
   }
 
-  @media (max-width: 991px) {
-    .product-grid {
-      grid-template-columns: 1fr;
-      gap: 48px;
-    }
+  /* Image panel */
+  .image-panel {
+    position: sticky;
+    top: 92px;
   }
 
-  .product-image-wrap {
-    position: sticky;
-    top: 100px;
-    border: 1px solid rgba(255,255,255,0.06);
+  .image-wrap {
+    position: relative;
     overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.07);
     background: rgba(255,255,255,0.02);
   }
 
-  .product-image {
+  .image-wrap img {
     width: 100%;
     aspect-ratio: 1;
     object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
   }
 
-  .section-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.22em;
+  .image-wrap:hover img { transform: scale(1.03); }
+
+  .image-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-    margin: 0 0 16px;
+    color: rgba(255,255,255,0.8);
+    background: rgba(0,0,0,0.7);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 6px 12px;
+    backdrop-filter: blur(4px);
+  }
+
+  .image-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 16px;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.25);
+  }
+
+  .image-note svg {
+    flex-shrink: 0;
+    margin-top: 1px;
+    opacity: 0.5;
+  }
+
+  /* Info panel */
+  .info-header {
+    margin-bottom: 0;
+  }
+
+  .collection-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin: 0 0 14px;
   }
 
   .product-name {
@@ -232,106 +250,132 @@ const watch = {
     font-size: clamp(32px, 4vw, 48px);
     font-weight: 300;
     line-height: 1.1;
-    color: #ffffff;
-    margin: 0 0 24px;
+    color: #fff;
+    margin: 0 0 10px;
   }
 
-  .product-desc {
-    font-size: 16px;
+  .product-ref {
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+    margin: 0;
+    letter-spacing: 0.1em;
+  }
+
+  .product-divider { margin: 32px 0; }
+
+  .product-description {
+    font-size: 15px;
     font-weight: 300;
-    line-height: 1.8;
+    line-height: 1.85;
     color: rgba(255,255,255,0.6);
     margin: 0;
   }
 
-  .section-divider {
-    width: 100%;
-    height: 1px;
-    background: rgba(255,255,255,0.06);
-  }
-
   /* Specs */
-  .specs-title {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
+  .specs-header {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-    margin: 0 0 24px;
+    color: rgba(255,255,255,0.25);
+    margin: 0 0 20px;
   }
 
-  .specs-list {
+  .spec-group {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .spec-group:last-child { border-bottom: none; }
+
+  .spec-group-title {
     display: flex;
-    flex-direction: column;
-    gap: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    list-style: none;
+    transition: color 0.2s;
+  }
+
+  .spec-group-title::-webkit-details-marker { display: none; }
+
+  .spec-group-title::after {
+    content: '+';
+    font-size: 16px;
+    color: rgba(255,255,255,0.3);
+    font-weight: 300;
+    transition: transform 0.2s;
+  }
+
+  details[open] .spec-group-title::after {
+    content: '−';
+  }
+
+  .spec-group-title:hover { color: #fff; }
+
+  .spec-items {
+    padding-bottom: 16px;
   }
 
   .spec-row {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    gap: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    gap: 16px;
   }
+
+  .spec-row:last-child { border-bottom: none; }
 
   .spec-label {
     font-size: 13px;
-    font-weight: 400;
-    color: rgba(255,255,255,0.4);
+    font-weight: 300;
+    color: rgba(255,255,255,0.35);
     flex-shrink: 0;
   }
 
   .spec-value {
     font-size: 13px;
-    font-weight: 300;
-    color: rgba(255,255,255,0.85);
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
     text-align: right;
   }
 
   /* CTA */
-  .btn-whatsapp {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 36px;
-    background: #25D366;
-    color: #fff;
+  .cta-note {
     font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    transition: background 0.2s;
+    font-weight: 300;
+    color: rgba(255,255,255,0.35);
+    margin: 0 0 20px;
   }
 
-  .btn-whatsapp:hover {
-    background: #1da851;
-    color: #fff;
-  }
-
-  /* Footer */
-  .footer {
-    padding: 40px 0;
-    border-top: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .footer-inner {
+  .btn-whatsapp-full {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 12px;
   }
 
-  .footer-brand {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.8);
+  .btn-back {
+    display: block;
+    text-align: center;
+    width: 100%;
   }
 
-  .footer-copy {
-    font-size: 12px;
-    color: rgba(255,255,255,0.3);
+  @media (max-width: 1024px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .image-panel { position: static; }
+  }
+
+  @media (max-width: 767px) {
+    .product-section { padding: 40px 0 80px; }
   }
 </style>
